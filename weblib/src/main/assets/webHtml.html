@@ -1,0 +1,36 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Android WebView 与 Javascript 交互</title>
+    <script src="file:///android_asset/baseJs.js"></script>
+</head>
+<body>
+<input type="button" value="haha" onclick="login('http://www.baidu.com')"/><p></p>
+<input type="button" value="分享" onclick="showInfoFromJava()"/>
+
+<input type="text" id="show"/>
+
+</body>
+
+<script>
+    var baseJsUtil = new BaseJsUtil();
+    function login(params) {
+        baseJsUtil.login(params);
+    }
+
+    function init(params) {
+        baseJsUtil.init(params);
+    }
+
+    function pay(params) {
+        baseJsUtil.pay(params);
+    }
+
+    function extraMethods(type,params) {
+        baseJsUtil.extraMethods(type,params);
+    }
+</script>
+</html>

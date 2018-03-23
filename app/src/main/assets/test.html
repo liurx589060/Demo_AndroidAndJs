@@ -1,0 +1,64 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Android WebView 与 Javascript 交互</title>
+
+</head>
+<body>
+<input type="button" value="haha" onclick="login('http://www.baidu.com',1000,'')"><p></p>
+<input type="button" value="分享" onclick="showInfoFromJava()">
+
+<input type="text" id="show"/>
+
+
+</body>
+
+<script>
+      function login(url,type,paramStr){
+          alert(url);
+          request(url,type,paramStr,1);
+          window.JSInterface.loginResult("login result success--" + paramStr + "---url=" + url + "---type=" + type) ;
+      }
+
+      function pay(url,type,paramStr){
+        window.JSInterface.pay("pay result success--" + paramStr);
+      }
+
+      function request(url,type,paramStr,methodsIndex) {
+          var method = type==1000?"GET":POST;
+          console.log(url + "--method=" + method);
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = onResult;
+          xhr.open(method, url, true);
+          xhr.send(null);
+          console.log(url);
+      }
+
+      function onResult(xhr,methodsIndex) {
+        if (xhr.readyState == 4) {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                var result = xhr.responseText;
+                try {
+                    result = JSON.parse(xhr.responseText);
+                    if (methodsIndex == 1) {
+                        window.JSInterface.loginResult(result);
+                    } else if (methodsIndex == 2) {
+                        window.JSInterface.payResult(result);
+                    }
+                } catch (e) {
+                    var json = {"code": 4002, "data": "", "errorMsg": "parse the result error"};
+                    if (methodsIndex == 1) {
+                        window.JSInterface.loginResult(result);
+                    } else if (methodsIndex == 2) {
+                        window.JSInterface.payResult(result);
+                    }
+                }
+            }
+        }
+      }
+
+   </script>
+</html>
