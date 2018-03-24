@@ -28,4 +28,24 @@
         android:layout_below="@+id/login"
         android:layout_marginTop="50dp"
         android:text="pay" />
+
+    <Button
+        android:id="@+id/init"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/pay"
+        android:layout_alignStart="@+id/pay"
+        android:layout_below="@+id/pay"
+        android:layout_marginTop="27dp"
+        android:text="init" />
+
+    <Button
+        android:id="@+id/extra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/init"
+        android:layout_alignStart="@+id/init"
+        android:layout_below="@+id/init"
+        android:layout_marginTop="34dp"
+        android:text="extra" />
 </RelativeLayout>

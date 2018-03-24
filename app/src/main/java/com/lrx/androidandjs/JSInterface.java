@@ -6,11 +6,13 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
 import com.lrx.androidandjs.callback.JsCallback;
@@ -36,15 +38,18 @@ public class JSInterface {
     public static final int ERROR_PARSE_JSON = 4002;
     public static final int SUCCESS = 200;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public JSInterface(Activity activity) {
         this.activity = activity;
         gson = new Gson();
         webView = new WebView(activity);
+        webView.setWebContentsDebuggingEnabled(true);
         webView.getSettings().setJavaScriptEnabled(true);
         //在js中调用本地java方法
         webView.addJavascriptInterface(this, "JSInterface");
 //        webView.setWebViewClient(new MyWebViewClient(activity));
         webView.loadUrl("file:///android_asset/webHtml.html");
+//        activity.addContentView(webView,new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
     }
 
     public void jsLogin(@NonNull Map params,JsCallback callback) {

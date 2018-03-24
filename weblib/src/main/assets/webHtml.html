@@ -5,11 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Android WebView 与 Javascript 交互</title>
-    <script src="file:///android_asset/baseJs.js"></script>
+    <script src="./baseJs.js"></script>
+    <!--<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">-->
+    <!--</script>-->
 </head>
 <body>
 <input type="button" value="haha" onclick="login('http://www.baidu.com')"/><p></p>
 <input type="button" value="分享" onclick="showInfoFromJava()"/>
+<p>如果你点我，我就会消失。</p>
+<p>继续点我!</p>
+<p>接着点我!</p>
 
 <input type="text" id="show"/>
 
@@ -32,5 +37,31 @@
     function extraMethods(type,params) {
         baseJsUtil.extraMethods(type,params);
     }
+
+    function log(message) {
+        baseJsUtil.log(message);
+    }
 </script>
 </html>
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+    <!--<meta charset="utf-8">-->
+    <!--<title>菜鸟教程(runoob.com)</title>-->
+    <!--<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">-->
+    <!--</script>-->
+    <!--<script>-->
+        <!--$(document).ready(function(){-->
+            <!--$("p").click(function(){-->
+                <!--$(this).hide();-->
+            <!--});-->
+        <!--});-->
+    <!--</script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<p>如果你点我，我就会消失。</p>-->
+<!--<p>继续点我!</p>-->
+<!--<p>接着点我!</p>-->
+<!--</body>-->
+<!--</html>-->
