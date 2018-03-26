@@ -48,7 +48,7 @@ public class JSInterface {
         //在js中调用本地java方法
         webView.addJavascriptInterface(this, "JSInterface");
 //        webView.setWebViewClient(new MyWebViewClient(activity));
-        webView.loadUrl("file:///android_asset/webHtml.html");
+        webView.loadUrl("file:///android_asset/js/webHtml.html");
 //        activity.addContentView(webView,new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
     }
 
@@ -208,7 +208,7 @@ public class JSInterface {
 
         @Override
         public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-            if (url.endsWith("baseJs.js")) {
+            if (url.endsWith("js/baseJs.js")) {
                 Log.i("result", url);
                 return editResponse();
             }
@@ -218,7 +218,7 @@ public class JSInterface {
         private WebResourceResponse editResponse() {
             try {
                 Log.i("result", "加载本地jquery.js");
-                return new WebResourceResponse("application/x-javascript", "utf-8", context.getAssets().open("baseJs.js"));
+                return new WebResourceResponse("application/x-javascript", "utf-8", context.getAssets().open("js/baseJs.js"));
             } catch (Exception e) {
                 e.printStackTrace();
                 Log.e("result", "加载本地js错误："+e.toString());
